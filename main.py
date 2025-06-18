@@ -6,6 +6,20 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 
+
+def reset_game(player, asteroids, shots):
+    print(f"Lives Left: {player.lives}")
+    player.position = pygame.Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player.rotation = 0
+    for asteroid in asteroids:
+        asteroid.kill()
+    
+    for shot in shots:
+        shot.kill()
+
+
+
+
 def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -36,8 +50,19 @@ def main():
         updatable.update(dt)
         for asteroid in asteroids:
             if (player.detect_collision(asteroid)):
-                print("Game over!")
-                sys.exit()
+                player.lives -= 1
+                if (player.lives <= 0):
+                    print("Game Over!")
+                    sys.exit()
+                else:
+                    reset_game(player, asteroids, shots)
+
+            for shot in shots:
+                if (asteroid.detect_collision(shot)):
+                    is_scorable = asteroid.split()
+                    if (is_scorable):
+                        player.add_score()
+                    shot.kill()
 
         # rendering
         screen.fill((0.0, 0.0, 0.0))

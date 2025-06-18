@@ -1,0 +1,44 @@
+- Add a scoring system
+
+- Implement multiple lives and respawning
+
+- Add an explosion effect for the asteroids
+- - animation method on asteroid
+- - enum to contain different animations
+- - on death play "EXPLOSION" animation
+
+- Add acceleration to the player movement
+
+- Make the objects wrap around the screen instead of disappearing
+- - maintain velocity reset position to x = 1-x, y = 1-y
+
+- Add a background image
+- - space background image
+
+- Create different weapon types
+- - power-up for heat seeking missle
+- - - shoots straigt till hitbox detects
+- - - path finds to nearest asteroid
+- - - explodes with large radius that wipes out all surrounding asteroids entirely
+
+- Make the asteroids lumpy instead of perfectly round
+- - draw polygon with random heights off of existing circle
+
+- Make the ship have a triangular hit box instead of a circular one
+
+- Add a shield power-up
+- - spawn them in
+- - limit to 1 on screen
+- - add is_shielded = true to player
+- - draw blue circle when shielded
+- - resist death and blow up nearby asteroids when shielded pops
+- - - shield pop animation?
+
+- Add a speed power-up
+- - same as shield but easy
+- - maybe draw thin line behind ship
+
+
+- Add bombs that can be dropped
+
+- Make asteroids break when they collide and go in opposite directions
